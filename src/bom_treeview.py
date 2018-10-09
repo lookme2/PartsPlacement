@@ -4,10 +4,6 @@ import csv
 import json
 import pickplace as pp
 from gerber_canvas import GerberCanvas as gc
-import mysql.connector
-from sshtunnel import SSHTunnelForwarder
-import sshtunnel
-import paramiko
 
 DEBUG = False
 
@@ -39,75 +35,6 @@ class bomTreeView:
         self.pnp_loaded = 0
         self.board_qty = 1
         self.board_qty_loop = 1
-
-    @staticmethod
-    def connect_to_database():
-        """
-        connect to partkeepr data base
-
-        :param: part_number: oem number of the part to look up
-        :return: location of the part in the data base
-
-        """
-        # todo get this connected to the data base
-        try:
-            ssh = paramiko.SSHClient()
-            ssh.set_missing_host_key_policy(paramiko.client.AutoAddPolicy())
-            ssh.connect('ps-partkeepr', username='prism', password='prism')
-        except paramiko.ssh_exception.SSHException:
-            if paramiko.AuthenticationException:
-                print('Could not Authenticate')
-            elif paramiko.BadAuthenticationType:
-                print('Servers Host key could not be verified.')
-            elif paramiko.SSHException:
-                print('Could not Establish the SSH connection')
-
-        chan = ssh.get_transport().open_session()
-        with chan:
-            cnx = mysql.connector.connect(user='root', password='prism',
-                                          host=None, database='partkeepr')
-        return chan, cnx
-
-
-        # # try to ssh into the computer hosting the partkeeper database
-        # try:
-        #     server = SSHTunnelForwarder(('ps-partkeepr', 22),
-        #                                 ssh_password='prism',
-        #                                 ssh_username='prism',
-        #                                 remote_bind_address=('127.0.0.1', 3306))
-        #
-        #     server.start()
-        #
-        #     try:  # try to connect to the partkeepr database
-        #         if server.is_alive:
-        #             cnx = mysql.connector.connect(user='root', password='prism',
-        #                                           host=server, database='partkeepr')
-        #             cursor = cnx.cursor()
-        #             if DEBUG:
-        #                 print(cnx)
-        #     except mysql.connector.Error as err:
-        #         print(err)
-        # except sshtunnel.BaseSSHTunnelForwarderError:
-        #     print('sshTunnel Base error')
-        # finally:
-        #     # cursor.close()
-        #     # cnx.close()
-        #     print('I am the cursor', cursor)
-        #     return cursor
-
-    def db_part_lookup(self, chan, cnx,  part):
-
-        # todo get part from database
-
-        query = ("select p.name as PartNumber, s.name as Location "
-                 "from Part as p left join StorageLocation as s on p.storageLocation_id = s.id where p.name = %s")
-
-        with chan:
-            location = ssh.exec_command()
-
-        cnx.execute(query, part)
-        print(cnx)
-        return cnx
 
     def import_csv(self):
         """
