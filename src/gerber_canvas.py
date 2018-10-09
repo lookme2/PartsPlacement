@@ -170,7 +170,7 @@ class GerberCanvas:
             if 'D01' and 'I' and 'J' in item:  # draw a circle/arc
                 self.start_x = self.x
                 self.start_y = self.y
-                self.__get_numbers(item)
+                self.__get_numbers(item)    # test
 
                 if self.quadrant_mode:  # This draws circles or arcs
                     if (self.start_x == self.x) and (self.start_y == self.y):   # This draws circles
