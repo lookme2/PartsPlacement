@@ -1,0 +1,2230 @@
+[
+ {
+  "text": "Manufacturer Part Number 1",
+  "image": "",
+  "values": [
+   "Designator",
+   "Comment"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "PCB00058B",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ECA-2AM101B",
+  "image": "",
+  "values": [
+   "C6",
+   "CAP ALUM 100UF 100V 20% RADIAL",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ECA-1VM471",
+  "image": "",
+  "values": [
+   "C38",
+   "CAP ALUM 470UF 35V 20% RADIAL",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CGA3E2X7R2A223K080AA",
+  "image": "",
+  "values": [
+   "C18",
+   "CAP CER 0.022UF 100V X7R 0603",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "12061C104KAT2A",
+  "image": "",
+  "values": [
+   "C2",
+   "CAP CER 0.1UF 100V 10% X7R 1206",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "12061C104KAT2A",
+  "image": "",
+  "values": [
+   "C21",
+   "CAP CER 0.1UF 100V 10% X7R 1206",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "12061C104KAT2A",
+  "image": "",
+  "values": [
+   "C3",
+   "CAP CER 0.1UF 100V 10% X7R 1206"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C1",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C10",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C13",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C14",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C20",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C26",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C32",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C33",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C104M5RACTU",
+  "image": "",
+  "values": [
+   "C7",
+   "CAP CER 0.1UF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "1206GC102KAT1A",
+  "image": "",
+  "values": [
+   "C4",
+   "CAP CER 1000 pF 2000V 10% X7R 1206"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "1206GC102KAT1A",
+  "image": "",
+  "values": [
+   "C5",
+   "CAP CER 1000 pF 2000V 10% X7R 1206"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C103M5RACTU",
+  "image": "",
+  "values": [
+   "C11",
+   "CAP CER 10000PF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C103M5RACTU",
+  "image": "",
+  "values": [
+   "C12",
+   "CAP CER 10000PF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C103M5RACTU",
+  "image": "",
+  "values": [
+   "C17",
+   "CAP CER 10000PF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C103M5RACTU",
+  "image": "",
+  "values": [
+   "C31",
+   "CAP CER 10000PF 50V 20% X7R 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C3216X5R1C106K160AA",
+  "image": "",
+  "values": [
+   "C16",
+   "CAP CER 10UF 16V 10% X7R 1206"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C3216X5R1C106K160AA",
+  "image": "",
+  "values": [
+   "C19",
+   "CAP CER 10UF 16V 10% X7R 1206"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C3216X5R1C106K160AA",
+  "image": "",
+  "values": [
+   "C25",
+   "CAP CER 10UF 16V 10% X7R 1206"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C3216X5R1C106K160AA",
+  "image": "",
+  "values": [
+   "C28",
+   "CAP CER 10UF 16V 10% X7R 1206"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C3216X5R1C106K160AA",
+  "image": "",
+  "values": [
+   "C29",
+   "CAP CER 10UF 16V 10% X7R 1206",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C3216X5R1C106K160AA",
+  "image": "",
+  "values": [
+   "C34",
+   "CAP CER 10UF 16V 10% X7R 1206",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C3216X5R1C106K160AA",
+  "image": "",
+  "values": [
+   "C35",
+   "CAP CER 10UF 16V 10% X7R 1206",
+   1
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C180J5GACTU",
+  "image": "",
+  "values": [
+   "C24 - DNP",
+   "CAP CER 18PF 50V NP0 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C0603C180J5GACTU",
+  "image": "",
+  "values": [
+   "C37 - DNP",
+   "CAP CER 18PF 50V NP0 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "C2012X7R1H105K085AC",
+  "image": "",
+  "values": [
+   "C15",
+   "CAP CER 1UF 50V 10% X7R 0805"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "HMK325B7225KN-T",
+  "image": "",
+  "values": [
+   "C22",
+   "CAP CER 2.2UF 100V 10% X7R 1210"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "HMK325B7225KN-T",
+  "image": "",
+  "values": [
+   "C23",
+   "CAP CER 2.2UF 100V 10% X7R 1210"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "HMK325B7225KN-T",
+  "image": "",
+  "values": [
+   "C36",
+   "CAP CER 2.2UF 100V 10% X7R 1210"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "HMK325B7225KN-T",
+  "image": "",
+  "values": [
+   "C8",
+   "CAP CER 2.2UF 100V 10% X7R 1210"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "HMK325B7225KN-T",
+  "image": "",
+  "values": [
+   "C9",
+   "CAP CER 2.2UF 100V 10% X7R 1210"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CL10C331JC8NNNC",
+  "image": "",
+  "values": [
+   "C27",
+   "CAP CER 330PF 100V 5% NP0 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CL10C331JC8NNNC",
+  "image": "",
+  "values": [
+   "C30",
+   "CAP CER 330PF 100V 5% NP0 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "DR127-330-R",
+  "image": "",
+  "values": [
+   "L1",
+   "DR127-330-R"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ATS122BSM-1",
+  "image": "",
+  "values": [
+   "Y1 - DNP",
+   "XTAL"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CSHD6-100C TR13",
+  "image": "",
+  "values": [
+   "D9",
+   "CSHD6-100C TR13"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "SMBJ5373B-TP",
+  "image": "",
+  "values": [
+   "D7",
+   "SMBJ5373B-TP"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "LL4148",
+  "image": "",
+  "values": [
+   "D8",
+   "LL4148"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ES2DA-13-F",
+  "image": "",
+  "values": [
+   "D3",
+   "ES2DA-13-F"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ES2DA-13-F",
+  "image": "",
+  "values": [
+   "D6",
+   "ES2DA-13-F"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "SMBJ51CA-13-F",
+  "image": "",
+  "values": [
+   "D1",
+   "NUP2105LT1G"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "SMBJ51CA-13-F",
+  "image": "",
+  "values": [
+   "D2",
+   "NUP2105LT1G"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "D4",
+   "UDZ5V1BF-7"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "D5",
+   "UDZ5V1BF-7"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "BLM21PG600SN1D",
+  "image": "",
+  "values": [
+   "L2",
+   "BLM21PG600SN1"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "3568",
+  "image": "",
+  "values": [
+   "F1",
+   "3A, 58V"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "0997003.WXN",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "W1",
+   "BYP"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "3220-10-0200-00",
+  "image": "",
+  "values": [
+   "P1",
+   "3220-10-0200-00"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "2-215307-0",
+  "image": "",
+  "values": [
+   "P2",
+   "RPI-B+"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "OSTOQ025451",
+  "image": "",
+  "values": [
+   "TB1 - DNP",
+   "OSTOQ025451"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "TP13 - DNP",
+   "Header 3"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "TP17 - DNP",
+   "Header 3"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "OSTOQ035450",
+  "image": "",
+  "values": [
+   "TB4",
+   "OSTOQ035450"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "'OSTTS03515A",
+  "image": "",
+  "values": [
+   "TB4 MATE",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "OSTOQ045450",
+  "image": "",
+  "values": [
+   "TB2",
+   "OSTOQ045450"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "OSTTS04515A",
+  "image": "",
+  "values": [
+   "TB2 MATE",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "OSTTC042162",
+  "image": "",
+  "values": [
+   "TB3",
+   "OSTTC042162"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "UE27-AC54-100",
+  "image": "",
+  "values": [
+   "J1 - DNP",
+   "USB-A"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "TP15 -DNP",
+   "DEBUG"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "PRPC005SBAN-M71RC",
+  "image": "",
+  "values": [
+   "P3",
+   "To Touch"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "IDSS-05-S-05.75-T-ST4",
+  "image": "",
+  "values": [
+   "P3 JUMPER",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "A-2014-1-4-N-T-R",
+  "image": "",
+  "values": [
+   "J2",
+   "RJ-11"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "A-2014-1-4-N-T-R",
+  "image": "",
+  "values": [
+   "J3",
+   "RJ-11"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "LP2950ACDT-3.3RG",
+  "image": "",
+  "values": [
+   "U8",
+   "LP2950ACDT-3.3RG"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ZXTR2012K-13",
+  "image": "",
+  "values": [
+   "U9",
+   "ZXTR2012K"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RT9068GSP",
+  "image": "",
+  "values": [
+   "U3",
+   "RT9068GSP"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "MAX6071BAUT30+T",
+  "image": "",
+  "values": [
+   "U5",
+   "MAX6071BAUT30+T"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "MAX6071AAUT30+T",
+  "image": "",
+  "values": [
+   "ALT",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "HPP845E031R5",
+  "image": "",
+  "values": [
+   "U1",
+   "HPP845E031R5"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "HPP845E034R5",
+  "image": "",
+  "values": [
+   "ALT",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ST1480ACDR",
+  "image": "",
+  "values": [
+   "U2",
+   "ST1480ACDR"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ST1480ACDR",
+  "image": "",
+  "values": [
+   "U4",
+   "ST1480ACDR"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "LM5576MHX/NOPB",
+  "image": "",
+  "values": [
+   "U7",
+   "LM5576MH/NOPB"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "STM32L051R8T6",
+  "image": "",
+  "values": [
+   "U6",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CL-140",
+  "image": "",
+  "values": [
+   "ICL1",
+   "CL-140"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "150080VS75000",
+  "image": "",
+  "values": [
+   "DS1",
+   "150080VS75000"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "150080VS75000",
+  "image": "",
+  "values": [
+   "DS2",
+   "150080VS75000"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "150080VS75000",
+  "image": "",
+  "values": [
+   "DS4",
+   "150080VS75000"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "150080SS75000",
+  "image": "",
+  "values": [
+   "DS3",
+   "150080SS75000"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC1608J000CS",
+  "image": "",
+  "values": [
+   "R25",
+   "RES 0.0 OHM 1/10W JUMP 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC1608J000CS",
+  "image": "",
+  "values": [
+   "R27 - DNP",
+   "RES 0.0 OHM 1/10W JUMP 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC1608J000CS",
+  "image": "",
+  "values": [
+   "R28",
+   "RES 0.0 OHM 1/10W JUMP 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-071K65L",
+  "image": "",
+  "values": [
+   "R22",
+   "RES 1.65K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-10R0ELF",
+  "image": "",
+  "values": [
+   "R19",
+   "RES 10 OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-10R0ELF",
+  "image": "",
+  "values": [
+   "R35",
+   "RES 10 OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R10",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R12",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R13",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R15",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R17",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R23",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R26",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R38",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R39",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R41",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-07100KL",
+  "image": "",
+  "values": [
+   "R18",
+   "RES 100K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-07100KL",
+  "image": "",
+  "values": [
+   "R20",
+   "RES 100K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-1001ELF",
+  "image": "",
+  "values": [
+   "R29",
+   "RES 1K OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-1001ELF",
+  "image": "",
+  "values": [
+   "R34",
+   "RES 1K OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-1001ELF",
+  "image": "",
+  "values": [
+   "R5, DNP",
+   "RES 1K OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-1001ELF",
+  "image": "",
+  "values": [
+   "R6",
+   "RES 1K OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-1001ELF",
+  "image": "",
+  "values": [
+   "R7",
+   "RES 1K OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "CRM2512-FX-1001ELF",
+  "image": "",
+  "values": [
+   "R8, DNP",
+   "RES 1K OHM 2W 1% 2512 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-072KL",
+  "image": "",
+  "values": [
+   "R21",
+   "RES 2.00K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-072KL",
+  "image": "",
+  "values": [
+   "R42",
+   "RES 2.00K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0720KL",
+  "image": "",
+  "values": [
+   "R30",
+   "RES 20.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0720KL",
+  "image": "",
+  "values": [
+   "R32",
+   "RES 20.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "TNPW060320K0BXEN",
+  "image": "",
+  "values": [
+   "R2",
+   "RES 20K OHM 1/10W 0.1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "TNPW060320K0BXEN",
+  "image": "",
+  "values": [
+   "R3",
+   "RES 20K OHM 1/10W 0.1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "SQP500JB-300R",
+  "image": "",
+  "values": [
+   "R9",
+   "RES 300 OHM 5W 5% AXIAL"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0733KL",
+  "image": "",
+  "values": [
+   "R43",
+   "RES 33K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-074K75L",
+  "image": "",
+  "values": [
+   "R36",
+   "RES 4.750K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-074K75L",
+  "image": "",
+  "values": [
+   "R37",
+   "RES 4.750K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ERA-3AEB4991V",
+  "image": "",
+  "values": [
+   "R1",
+   "RES 4.99K OHM 1/10W .1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "ERA-3AEB4991V",
+  "image": "",
+  "values": [
+   "R4",
+   "RES 4.99K OHM 1/10W .1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-07560RL",
+  "image": "",
+  "values": [
+   "R16",
+   "RES 560 OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-07560RL",
+  "image": "",
+  "values": [
+   "R33",
+   "RES 560 OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-07560RL",
+  "image": "",
+  "values": [
+   "R40",
+   "RES 560 OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0775RL",
+  "image": "",
+  "values": [
+   "R31",
+   "RES 75.0 OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-071ML",
+  "image": "",
+  "values": [
+   "R14",
+   "RES SMD 1M OHM 1% 1/10W 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-075K49L",
+  "image": "",
+  "values": [
+   "R24",
+   "RES SMD 5.49K OHM 1% 1/10W 0603"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "RC0603FR-0710KL",
+  "image": "",
+  "values": [
+   "R11 - DNP",
+   "RES 10.0K OHM 1/10W 1% 0603 SMD"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "DMN65D8L-7",
+  "image": "",
+  "values": [
+   "Q1",
+   "DMN65D8L-7"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "DMN65D8L-7",
+  "image": "",
+  "values": [
+   "Q2",
+   "DMN65D8L-7"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "DMN65D8L-7",
+  "image": "",
+  "values": [
+   "Q3",
+   "DMN65D8L-7"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "DMN65D8L-7",
+  "image": "",
+  "values": [
+   "Q4",
+   "DMN65D8L-7"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "IPD50P04P4L-11",
+  "image": "",
+  "values": [
+   "Q5",
+   "IPD50P04P4L-11"
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "M2163-3005-SS",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ },
+ {
+  "text": "",
+  "image": "",
+  "values": [
+   "",
+   ""
+  ],
+  "open": 0,
+  "tags": ""
+ }
+]

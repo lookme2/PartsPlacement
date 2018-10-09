@@ -1,0 +1,98 @@
+Altium Designer Pick and Place Locations
+J:\ActiveProjects\Marvair NextGen CoolLinks\NextGenEmbedded\Electronics\EDA\T&H\Project Outputs for T&H_RTD\Pick Place for PCB00048C.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       25/09/18
+Time:       16:19
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator Comment                            Layer       Footprint           Center-X(mil) Center-Y(mil) Rotation Description                                                                                            
+C2         "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               1696.535      1495.000      180      Capacitor                                                                                              
+C23        "CAP ALUM 22UF 10V 20% RADIAL"     TopLayer    RB2-5               1365.000      225.000       270      "Capacitor, DNP"                                                                                       
+TP9        SCL2                               TopLayer    TP15H0              1390.000      923.071       90       ""                                                                                                     
+U6         MAX6071BAUT30+T                    TopLayer    SOT23-6_M           1790.000      930.000       90       "IC VREF SERIES 3V SOT23-6"                                                                            
+TP22       3V                                 TopLayer    TP60H32             1935.000      965.000       90       ""                                                                                                     
+C22        "CAP CER 1UF 50V 10% X7R 0805"     TopLayer    C0805-1             1792.599      790.000       0        Capacitor                                                                                              
+C21        "CAP CER 10UF 16V 10% X7R 1206"    TopLayer    C1206-1             2035.000      1005.000      90       Capacitor                                                                                              
+TP21       PB12                               TopLayer    TP60H32             1420.000      695.000       90       ""                                                                                                     
+TP20       PA5                                TopLayer    TP60H32             745.000       640.000       90       ""                                                                                                     
+TP5        "Header 3"                         TopLayer    SIP3_2MM            1390.000      1161.260      90       "Header, 3-Pin"                                                                                        
+TB1        282836-4                           TopLayer    TB4-5MM             2438.386      549.724       90       "Conn, Terminal Block, Header, 4-Pin"                                                                  
+U5         ST1480ACDR                         BottomLayer SO8                 1258.425      510.000       360      "IC, Multipoint RS-485/RS-422 Transceivers"                                                            
+U2         STM32L051R8T6                      TopLayer    STM-LQFP64_N        1040.000      1073.071      360      "ARM Cortex-M0 32-bit MCU, 64 KB Flash, 8 KB Internal RAM, 55 I/Os, 64-pin LQFP, -40 to 85 degC, Tray" 
+R12        "RES 20.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             2025.000      1283.071      90       Resistor                                                                                               
+R18        "RES 0.0 OHM 1/10W JUMP 0603"      BottomLayer R0603-1             2045.000      1140.000      360      "RES 0.0 OHM 1/10W JUMP 0603"                                                                          
+R14        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             2150.000      1303.465      360      Resistor                                                                                               
+R5         "RES 100K OHM 1/10W 1% 0603 SMD"   TopLayer    R0603-1             2308.465      1303.465      360      Resistor                                                                                               
+L1         220uH                              TopLayer    COIL_4MMSQ          2438.386      1161.260      90       COIL_220uH                                                                                             
+C3         "CAP CER 4.7UF 50V 10% X7R 1206"   TopLayer    C1206               2203.937      1406.260      360      Capacitor                                                                                              
+C4         "CAP CER 4.7UF 50V 10% X7R 1206"   TopLayer    C1206               2203.937      1500.000      360      Capacitor                                                                                              
+C11        "CAP CER 10000PF 50V 20% X7R 0603" BottomLayer C0603               500.000       1475.000      180      Capacitor                                                                                              
+C6         "CAP CER 10000PF 50V 20% X7R 0603" TopLayer    C0603               406.535       1240.000      180      Capacitor                                                                                              
+C20        "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               1460.000      525.000       270      Capacitor                                                                                              
+C12        "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               500.000       1350.000      90       Capacitor                                                                                              
+C5         "CAP CER 10000PF 50V 20% X7R 0603" TopLayer    C0603               700.000       1326.535      90       Capacitor                                                                                              
+C13        "CAP CER 330PF 100V 5% NP0 0603"   BottomLayer C0603               2308.465      1303.465      360      Capacitor                                                                                              
+C7         "CAP CER 0.1UF 50V 20% X7R 0603"   TopLayer    C0603               2175.000      1055.000      0        Capacitor                                                                                              
+C1         "CAP ALUM 22UF 10V 20% RADIAL"     TopLayer    RB2-5               1925.000      1445.630      270      "Capacitor, DNP"                                                                                       
+C8         "CAP CER 4.7UF 50V 10% X7R 1206"   TopLayer    C1206               2175.000      970.000       360      Capacitor                                                                                              
+C17        "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               216.535       950.000       180      Capacitor                                                                                              
+D1         LL4148                             TopLayer    SOD80-AK            2505.000      1328.071      180      "DIODE, 100V, 0.2A"                                                                                    
+P2         "Header 2"                         TopLayer    HDR1X2              270.000       600.000       360      "Header, 2-Pin"                                                                                        
+P3         RJ-11                              TopLayer    RJ11-6V             1900.000      375.000       360      "Header, 6-Pin"                                                                                        
+R1         "RES 4.99K OHM 1/10W .1% 0603 SMD" TopLayer    R0603-1             342.700       1476.000      180      Resistor                                                                                               
+R29        "RES SMD 825 OHM 0.1% 1/10W 0603"  BottomLayer R0603-1             346.535       -20.000       180      Resistor                                                                                               
+R21        PT-1000                            BottomLayer R1206-1             260.000       700.000       180      Resistor                                                                                               
+R28        "RES SMD 5.1 OHM 0.1% 1/16W 0603"  BottomLayer R0603-1             500.000       -20.000       180      Resistor                                                                                               
+R2         "RES SMD 825 OHM 0.1% 1/10W 0603"  TopLayer    R0603-1             483.464       1475.000      180      Resistor                                                                                               
+R22        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             1580.000      665.000       90       Resistor                                                                                               
+R11        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             700.000       1326.535      90       Resistor                                                                                               
+R23        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             1580.000      525.000       90       Resistor                                                                                               
+R27        "RES SMD 1.24KOHM 0.1% 1/10W 0603" BottomLayer R0603-1             346.535       160.000       180      Resistor                                                                                               
+R24        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             1580.000      385.000       90       Resistor                                                                                               
+R3         "RES 20.0K OHM 1/10W 1% 0603 SMD"  TopLayer    R0603-1             242.700       1376.000      90       Resistor                                                                                               
+R6         "RES 4.99K OHM 1/10W .1% 0603 SMD" TopLayer    R0603-1             246.535       1240.000      180      Resistor                                                                                               
+R9         "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             242.700       1376.000      90       Resistor                                                                                               
+R25        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             60.000        280.000       90       Resistor                                                                                               
+R26        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             -80.000       280.000       270      Resistor                                                                                               
+R20        "RES 10 OHM 2W 1% 2512 SMD"        BottomLayer R2512               2438.386      1102.205      90       Resistor                                                                                               
+TP17       X-                                 TopLayer    TP60H32             1950.000      650.000       270      ""                                                                                                     
+TP16       "Header 3"                         TopLayer    SIP3_2MM            1010.000      493.740       270      "Header, 3-Pin"                                                                                        
+TP14       "Header 3"                         TopLayer    SIP3_2MM            1018.740      720.000       360      "Header, 3-Pin"                                                                                        
+TP15       X+                                 TopLayer    TP60H32             1830.000      650.000       90       ""                                                                                                     
+TP3        RTD                                TopLayer    TP60H32             30.000        1120.000      90       ""                                                                                                     
+TP1        3.5V                               TopLayer    TP60H32             1200.000      240.000       90       ""                                                                                                     
+TP6        24V                                TopLayer    TP60H32             2355.236      1565.000      90       ""                                                                                                     
+U1         INA827AIDGKR                       TopLayer    MSOP-8              417.700       1351.000      360      ""                                                                                                     
+U3         RT6208GE                           TopLayer    SOT23-6_M           2212.598      1182.756      270      "Micropower, Low Noise Precision Voltage Reference with Shutdown"                                      
+U4         HPP845E031R5                       BottomLayer DNF6_1              195.000       825.000       270      "IC, Humidity and temperature sensor"                                                                  
+TP4        TV                                 TopLayer    TP60H32             785.000       1415.000      360      ""                                                                                                     
+TP2        LO                                 TopLayer    TP60H32             525.000       1555.000      360      ""                                                                                                     
+C18        "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               840.000       906.535       90       Capacitor                                                                                              
+C10        "CAP CER 18PF 50V NP0 0603"        BottomLayer C0603               1333.465      1490.000      360      Capacitor                                                                                              
+C9         "CAP CER 18PF 50V NP0 0603"        BottomLayer C0603               908.465       1490.000      180      Capacitor                                                                                              
+C16        "CAP CER 10UF 16V 10% X7R 1206"    BottomLayer C1206-1             1440.000      940.000       180      Capacitor                                                                                              
+C14        "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               940.000       1298.071      180      Capacitor                                                                                              
+C15        "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               1265.000      1164.606      90       Capacitor                                                                                              
+C19        "CAP CER 0.1UF 50V 20% X7R 0603"   BottomLayer C0603               1140.000      848.071       360      Capacitor                                                                                              
+P1         20021521-00010T1LF                 TopLayer    HDR2X5_SHROUD-SMD-u 1680.000      1278.071      90       "Header, 10-Pin"                                                                                       
+Q2         "BSS806N H6327"                    TopLayer    SOT-23-SGD          580.000       159.500       90       TRANSISTOR                                                                                             
+Q3         "BSS806N H6327"                    TopLayer    SOT-23-SGD          420.000       157.500       90       TRANSISTOR                                                                                             
+Q1         "BSS806N H6327"                    TopLayer    SOT-23-SGD          260.000       159.500       90       TRANSISTOR                                                                                             
+R19        "RES 10.0 OHM 1/10W 1% 0603 SMD"   BottomLayer R0603-1             765.000       906.535       90       Resistor                                                                                               
+R7         "RES 1.00K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             2030.000      785.000       90       Resistor                                                                                               
+R15        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             1755.000      1270.000      270      "Resistor, DNP"                                                                                        
+R13        "RES 10.0K OHM 1/10W 1% 0603 SMD"  BottomLayer R0603-1             1580.000      1320.000      180      Resistor,DNP                                                                                           
+TP19       SDA                                TopLayer    TP60H32             70.000        160.000       180      ""                                                                                                     
+TP18       SCL                                TopLayer    TP60H32             -75.000       160.000       180      ""                                                                                                     
+TP8        SDA2                               TopLayer    TP15H0              1390.000      948.071       90       ""                                                                                                     
+TP7        PAD                                TopLayer    TP15H0              1390.000      973.071       90       ""                                                                                                     
+Y1         XTAL                               TopLayer    HC49/US-SM          1128.929      1490.000      180      "Crystal Oscillator"                                                                                   
+DS1        LTL-307GLC                         TopLayer    LED-T1              2150.000      740.000       270      ""                                                                                                     
+TP10       PAD                                TopLayer    TP15H0              740.000       900.000       90       ""                                                                                                     
+TP11       PAD                                TopLayer    TP15H0              860.000       820.000       180      ""                                                                                                     
+TP12       PAD                                TopLayer    TP15H0              1140.000      780.000       90       ""                                                                                                     
