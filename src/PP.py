@@ -4,13 +4,13 @@ import tkinter as tk
 from tkinter import ttk
 import gerber_canvas as gc
 import bom_treeview as bt
-import pickplace as pp
+from pickplace import PickPlace
 import zf as zip
 import sys
 
 
-def load_pick_place(frame):
-    status = pp.load_pick_place(frame)
+def load_pick_place(canvas):
+    status = PickPlace.load_pick_place(canvas)
     my_bom.pnp_loaded = status
     # fi.set_pick_n_place_file_name(frame, pp.pick_n_place_filename)
 
@@ -45,6 +45,9 @@ if __name__ == '__main__':
     bom_frame.configure(height='50')
     bom_frame.pack(fill='both', anchor='n', padx=10, pady=10)
 
+    component_info_frame = tk.Frame(root)
+    component_info_frame.pack(fill='both', anchor='n', padx=5, pady=5)
+
     canvas_frame = tk.Frame(root)
     canvas_frame.pack(expand=True, fill='both', anchor='center', padx=10, pady=1)
 
@@ -60,15 +63,15 @@ if __name__ == '__main__':
     btn_load_bom = tk.Button(bottom_frame, text='Import BOM', command=lambda: bom_import_csv(my_bom))
     btn_load_bom.grid(row=0, column=1, sticky='e', padx='10', pady='5')
 
-    btn_save_bom = tk.Button(bottom_frame, text='Save BOM File', command=lambda: bt.bomTreeView.save(my_bom))
+    btn_save_bom = tk.Button(bottom_frame, text='Save BOM File', command=lambda: bt.self.save(my_bom))
     btn_save_bom.grid(row=0, column=2, sticky='e', padx='10', pady='5')
 
-    btn_load_bom = tk.Button(bottom_frame, text='Load BOM File', command=lambda: bt.bomTreeView.load(my_bom))
+    btn_load_bom = tk.Button(bottom_frame, text='Load BOM File', command=lambda: bt.self.load(my_bom))
     btn_load_bom.grid(row=0, column=3, sticky='e', padx='10', pady='5')
 
     checked = tk.IntVar()
     ckb_auto_move = tk.Checkbutton(bottom_frame, text='Auto Move', variable=checked,
-                                   command=lambda: bt.bomTreeView.auto_advance(my_bom, checked.get()))
+                                   command=lambda: bt.self.auto_advance(my_bom, checked.get()))
     ckb_auto_move.grid(row=0, column=4, padx='10', pady='5')
 
     tk.Label(bottom_frame, text='Board Qty:').grid(row=0, column=5, padx='10', pady='5')

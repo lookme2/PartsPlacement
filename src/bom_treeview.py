@@ -2,16 +2,37 @@ from tkinter import ttk as ttk
 from tkinter.filedialog import askopenfilename, asksaveasfile
 import csv
 import json
-import pickplace as pp
+from pickplace import PickPlace
 from gerber_canvas import GerberCanvas as gc
 
 DEBUG = False
+
+
+class Part:
+    """
+    Hold information about each component on the board
+    """
+
+    def __init__(self, part_number, description, ref):
+        """
+        Constructor to setup each new part
+
+        :param part_number: this is the OEM part number for the component
+        :param description: this is the description of the component
+        :param ref: part number reference (eg.  R1,C1)
+        """
+        self.ref = []
+        self.part_number = part_number
+        self.description = description
+        self.ref.append(ref)
 
 
 class bomTreeView:
     """
     Setup my BOM Tree view
     """
+
+    parts_list = []  # hold the list of parts
 
     def __init__(self, frame, canvas):
         self.my_bom_file = ''
@@ -51,19 +72,25 @@ class bomTreeView:
                     global reader
 
                     reader = csv.reader(csvfile)
-                    for row in reader:  # this processes the csv file to populate the grid
-                        print(row)
-                        # location = self.db_part_lookup(chan, cnx, row[12])
-                        self.my_bom_list.insert('', 'end', text=row[12], values=(row[3], row[1]))
+                    for row in reader:  # this processes the csv file to populate the list of parts
+                        # row[1] = description
+                        # row[3] = ref
+                        # row[12]= Part#
+                        if row[12]:
+                            new_component = Part(row[12], row[1], row[3])
+                            # check to see if part is already in my list of parts
+                            is_existing_part = self.check_part_number(new_component)
+                            if is_existing_part:
+                                is_existing_part.ref.append(new_component.ref)
+                            else:
+                                self.parts_list.append(new_component)
                     csvfile.close()
-                self.my_bom_list.focus('I001')
-                self.my_bom_list.selection_toggle('I001')
         except IOError:
             print('Error msg is: ', IOError.strerror)
         finally:
-            # cursor.close()
-            # cnx.close()
-            pass
+            self.write_bom_list()
+            self.my_bom_list.selection_toggle('I001')
+            self.my_bom_list.focus('I001')
 
     def save(self):
         """
@@ -114,6 +141,25 @@ class bomTreeView:
         except IOError:
             print('Error msg is: ', IOError.strerror)
 
+    def check_part_number(self, current_part_number):
+        """Check to see if part number exist in the current parts list
+        :param: current_part_number to search for.
+        :return: the matching part record. else false.
+        """
+        for part in self.parts_list:
+            if current_part_number.part_number == part.part_number:
+                return part
+        return False
+
+    def write_bom_list(self):
+        """Show the parts list in the bom tree view"""
+        for part in self.parts_list:
+            if len(part.ref) <= 1:
+                self.my_bom_list.insert('', 'end', text=part.part_number, values=(part.ref, part.description))
+            else:
+                for each in part.ref:
+                    self.my_bom_list.insert('', 'end', text=part.part_number, values=(each, part.description))
+
     def number_of_boards(self, qty):
         self.board_qty = int(qty)
         if DEBUG:
@@ -155,23 +201,20 @@ class bomTreeView:
             if self.pnp_loaded:
                 self.check_part()
 
-    def check_part(self, event):
-        gc.delete_current_highlight(self.canvas)
+    # fixme this is not working right.  you need to fix
+    def check_part(self, event=None):
         rowid = self.my_bom_list.focus()
-        dictTemp = self.my_bom_list.set(rowid)
-        if DEBUG:
-            print(rowid)
-            print(dictTemp)
-        if dictTemp['Component']:
-            # print(dictTemp['Component'])
-            x = pp.get_x(dictTemp['Component'])
-            y = pp.get_y(dictTemp['Component'])
-            layer = pp.get_layer(dictTemp['Component'])
-            if self.pnp_loaded:
-                try:
-                    self.__current_selelction = gc.high_lite_part(self.canvas, x, y, layer)
-                except TypeError:
-                    pass
+        current_part = self.my_bom_list.set(rowid)
+        # print(self.my_bom_list.set(rowid))
+
+        if PickPlace.is_file_loaded:
+            gc.delete_current_highlight(self.canvas)
+            try:
+                for pnp in PickPlace.pick_n_place_list:
+                    if pnp['ref'] == current_part['Component']:
+                        gc.high_lite_part(self.canvas, pnp['x'], pnp['y'], pnp['layer'])
+            except TypeError:
+                pass
 
     def auto_advance(self, mode):
         """

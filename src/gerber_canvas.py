@@ -48,6 +48,7 @@ class GerberCanvas:
 
         self.x_scrollbar = tk.Scrollbar(self.my_canvas, orient=tk.HORIZONTAL, command=self.my_canvas.xview)
         self.x_scrollbar.pack(fill='x', anchor='s')
+
         # Set this only if using in Linux
         if sys.platform == 'linux':
             self.my_canvas.configure(xscrollcommand=self.x_scrollbar.set, yscrollcommand=self.y_scrollbar.set)
@@ -63,6 +64,7 @@ class GerberCanvas:
             if all_ids:     # delete the current image if one exist.
                 try:
                     for item in all_ids:
+                        print(item)
                         self.my_canvas.delete(item)
                 except tk.TclError:
                     messagebox.showerror('Error', tk.TclError)
