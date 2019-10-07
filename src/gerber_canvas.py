@@ -1,13 +1,20 @@
 import tkinter as tk
-import pickplace as pp
+from pickplace import PickPlace
 import sys
 import math
 from tkinter import messagebox
+import os
 
 DEBUG = False
 
 
 class GerberCanvas:
+
+    file_gto = False
+    file_gtp = False
+    units = 0
+    units_string = ('i', 'm')
+
     """
     my canvas
     """
@@ -19,7 +26,7 @@ class GerberCanvas:
         self.file_commands = ''
         self.file_gtp_commands = ''
         self.gerber_file_name = ''
-        self.AD_commands = {}
+        self.AD_commands = {}   # dict to hold aperture commands
         self.current_aperture = ''
         self.x = '0'
         self.y = '0'
@@ -34,7 +41,7 @@ class GerberCanvas:
         self.scaled = False
         self.bounding_box_size = ()
 
-        self.my_canvas = tk.Canvas(frame, bg='white')
+        self.my_canvas = tk.Canvas(frame, bg='white', bd='1')
         self.my_canvas.pack(expand=True, fill='both')
         if sys.platform == 'linux':
             self.my_canvas.bind('<Button-4>', self.__scale_image_up)
@@ -55,40 +62,56 @@ class GerberCanvas:
 
         self.__part_selected = 0
 
-    def load_gerber(self, file_path):
+    # @property
+    # def my_canvas(self):
+    #     return self.my_canvas
+
+    def load_gerber(self, canvas, path, file):
+        """load gerber file
+        :param canvas:  which canvas to draw on
+        :param path:  path to the file
+        :param file:  file name to use
+        """
+
         try:
             # file_path = askopenfilename(title='Open Top Silk Screen File', filetypes=[('GTO files', '*.GTO')],
             #                             initialdir='')
-
+            # all_ids = canvas.find_all()
             all_ids = self.my_canvas.find_all()
-            if all_ids:     # delete the current image if one exist.
+            # delete the current image if one exist.
+            if all_ids:
                 try:
                     for item in all_ids:
                         print(item)
                         self.my_canvas.delete(item)
                 except tk.TclError:
                     messagebox.showerror('Error', tk.TclError)
-            if file_path:
+
+            if path:
+                self.file_gto = True
                 try:
-                    with open(file_path, 'r') as gerber_file:
+                    with open(os.path.join(path, file), 'r') as gerber_file:
                         self.file_commands = gerber_file.read().splitlines()
                 except TypeError:
                     messagebox.showerror('Type Error', 'Invalid File Type')
                     # self._parse_file(gerber_file.read())
             self.__parse_file(self.file_commands)
             self.my_canvas.create_oval('0i', '0i', '.1i', '.1i', outline='red')
-            self.gerber_file_name = file_path
+            self.gerber_file_name = file
             # self.my_canvas.config(scrollregion=self.my_canvas.bbox('all'))
             self.scaled = False
             self.bounding_box_size = self.my_canvas.bbox('all')
             if DEBUG:
                 print('Scroll region is : ', self.bounding_box_size)
-
-            # self.load_gerber_gtp(file_path)   #todo Add pad layer into the image
+            # load top pads into image
+            self.load_gerber_gtp(os.path.join(path, file))
         except IOError:
             messagebox.showerror('File Error', 'File did not open, GTO')
+        finally:
+            self.file_gto = False
 
     def load_gerber_gtp(self, file_path):
+        self.file_gtp = True
         try:
             print(file_path)
             new_file = 'c' + file_path[1:len(file_path)-3]+'GTP'
@@ -100,7 +123,7 @@ class GerberCanvas:
                 except TypeError:
                     messagebox.showerror('Type Error', 'Invalid File Type')
             self.__parse_file(self.file_gtp_commands)
-            self.scaled = False
+            # self.scaled = False
         except IOError:
             messagebox.showerror('File Error', 'File did not open, GTO')
 
@@ -117,11 +140,9 @@ class GerberCanvas:
             if '%MO' in item:
                 self.units = item[3:5]
                 if 'IN' in item:
-                    self.__inch = 1
-                    self.__mm = 0
+                    GerberCanvas.units = 0
                 if 'MM' in item:
-                    self.__inch = 0
-                    self.__mm = 1
+                    GerberCanvas.units = 1
                 # print('units is ', self.units)
             if 'G01' in item:
                 self.graphics_mode = 1  # sets Interpolation mode graphics state parameter to linear
@@ -133,7 +154,7 @@ class GerberCanvas:
                 self.quadrant_mode = 0  # single Quadrant mode
             if 'G75' in item:
                 self.quadrant_mode = 1  # Multi quadrant mode
-            if '%AD' in item:   # diameter of the circle
+            if '%AD' in item:   # define the aperture
                 name = item[3:item.find(',')-1]
                 if DEBUG:
                     print(name)
@@ -142,14 +163,54 @@ class GerberCanvas:
                 value = item[start-1:stop]
                 if DEBUG:
                     print(value)
-                self.AD_commands[name] = value[2:len(value)]
-            if item[0:1] == 'D':
+                self.AD_commands[name] = value
+            if item[0:1] == 'D':    # set the current aperture
                 item = item[0:item.find('*')]
                 if DEBUG:
                     print('I found a ', item)
                 for key, value in self.AD_commands.items():
+                    self.current_ad_command = key
                     if item in key:
-                        self.current_aperture = value
+                        if 'R,' in value:   # for a rectangle
+                            print(value)
+                            x, y = self.__get_rectangle_size(value)
+                            self.rect_x = x
+                            self.rect_y = y
+                            print('Half of x is: ', float(self.rect_x)/2)
+                            # todo send this to a function to get size
+                        elif 'C,' in value:     # for a circle
+                            print(value)
+                            self.current_aperture = self.__get_circle_diameter(value)
+                        elif 'O,' in value:     # for a ob-round
+                            pass
+                        elif 'P,' in value:     # for a polygon
+                            pass
+                        elif 'TARGET' in value:
+                            pass
+                        elif 'THERMAL' in value:
+                            pass
+
+            # This is the Flash command. Create a flash of the object.
+            if 'D03' in item:
+                if DEBUG:
+                    print('current key is = ', self.current_ad_command)
+                    print(self.AD_commands[self.current_ad_command])
+                if 'R,' in self.AD_commands[self.current_ad_command]:
+                    if DEBUG:
+                        print('draw a rectangle')
+                    x0 = float(self.start_x) - float(self.rect_x) / 2
+                    y0 = float(self.start_y) + float(self.rect_y) / 2
+                    x1 = float(self.start_x) + float(self.rect_x) / 2
+                    y1 = float(self.start_y) - float(self.rect_y) / 2
+                    self.my_canvas.create_rectangle(str(x0) + GerberCanvas.units_string[GerberCanvas.units],
+                                                    str(y0) + GerberCanvas.units_string[GerberCanvas.units],
+                                                    str(x1) + GerberCanvas.units_string[GerberCanvas.units],
+                                                    str(y1) + GerberCanvas.units_string[GerberCanvas.units],
+                                                    outline='black', fill='black')
+                if 'C,' in self.AD_commands[self.current_ad_command]:
+                    print('draw a circle')
+
+            # the D02 command is the move to command.
             if 'D02' in item:
                 self.__get_numbers(item)
                 if 'X' in item and 'Y' not in item:
@@ -160,51 +221,74 @@ class GerberCanvas:
                     self.start_x = self.x
                     self.start_y = self.y
             # if ('D01' in item) and (('I' not in item) and ('J' not in item)):   # draw a line
-            if ('D01' in item) and (('I' not in item) and ('J' not in item)):  # draw a line
-                self.__get_numbers(item)
-                if DEBUG:
-                    print(self.start_x, ',', self.start_y, ',', self.x, ',', self.y)
-                self.my_canvas.create_line(self.start_x+'i', self.start_y+'i', self.x+'i', self.y+'i',
-                                           width=self.current_aperture+'i')
-                self.start_x = self.x
-                self.start_y = self.y
+            if ('D01' in item) and (('I' not in item) and ('J' not in item)):
+                if self.file_gto:   # draw a line
+                    self.__get_numbers(item)
+                    if DEBUG:
+                        print(self.start_x, ',', self.start_y, ',', self.x, ',', self.y)
+                    self.my_canvas.create_line(self.start_x+'i', self.start_y+'i', self.x+'i', self.y+'i',
+                                               width=self.current_aperture+'i')
+                    self.start_x = self.x
+                    self.start_y = self.y
+
             #  this Draws a circle.
             if 'D01' and 'I' and 'J' in item:  # draw a circle/arc
-                self.start_x = self.x
-                self.start_y = self.y
-                self.__get_numbers(item)    # test
+                if self.file_gto:
+                    self.start_x = self.x
+                    self.start_y = self.y
+                    self.__get_numbers(item)    # test
 
-                if self.quadrant_mode:  # This draws circles or arcs
-                    if (self.start_x == self.x) and (self.start_y == self.y):   # This draws circles
-                        cp_x = float(self.start_x) + float(self.i)
-                        cp_y = float(self.start_y) + float(self.j)
-                        if self.i != 0:
-                            radius = float(self.i)
-                        elif self.j != 0:
-                            radius = float(self.j)
-                        self.my_canvas.create_oval(str(cp_x - radius)+'i', str(cp_y - radius)+'i',
-                                                   str(cp_x + radius)+'i', str(cp_y + radius)+'i',
-                                                   outline='black', width=self.current_aperture)
+                    if self.quadrant_mode:  # This draws circles or arcs
+                        if (self.start_x == self.x) and (self.start_y == self.y):   # This draws circles
+                            cp_x = float(self.start_x) + float(self.i)
+                            cp_y = float(self.start_y) + float(self.j)
+                            if self.i != 0:
+                                radius = float(self.i)
+                            elif self.j != 0:
+                                radius = float(self.j)
+                            try:
+                                self.my_canvas.create_oval(str(cp_x - radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                           str(cp_y - radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                           str(cp_x + radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                           str(cp_y + radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                           outline='black', width=self.current_aperture)
+                            except UnboundLocalError():
+                                messagebox.showwarning('Warning', 'Something went wrong.')
+                                break
+                        else:   # This draws arcs
+                            cp_x = float(self.start_x) + float(self.i)
+                            cp_y = float(self.start_y) + float(self.j)
+                            if DEBUG:
+                                print(str(cp_x) + ' ' + str(cp_y))
+                            if float(self.i) > 0:
+                                radius = float(self.i)
+                            elif float(self.j) > 0:
+                                radius = float(self.j)
+                            self.__set_direction()
+                            start_angle = math.degrees(math.atan2(float(self.start_y) - cp_y, float(self.start_x) - cp_x))
+                            end_angle = math.degrees(math.atan2(float(self.y) - cp_y, float(self.x) - cp_x))
+                            # ext = math.degrees(self.__get_extent(radius))
+                            self.my_canvas.create_arc(str(cp_x + radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                      str(cp_y + radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                      str(cp_x - radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                      str(cp_y - radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                      style=tk.ARC, width=self.current_aperture, start=start_angle,
+                                                      extent=end_angle-start_angle, outline='black')
+                            # self.my_canvas.create_arc('0', '0', '100', '100', style='arc', start=90, extent=180,
+                            #                           outline='purple')
 
-                    else:   # This draws arcs
-                        cp_x = float(self.start_x) + float(self.i)
-                        cp_y = float(self.start_y) + float(self.j)
-                        if DEBUG:
-                            print(str(cp_x) + ' ' + str(cp_y))
-                        if float(self.i) > 0:
-                            radius = float(self.i)
-                        elif float(self.j) > 0:
-                            radius = float(self.j)
-                        self.__set_direction()
-                        start_angle = math.degrees(math.atan2(float(self.start_y) - cp_y, float(self.start_x) - cp_x))
-                        end_angle = math.degrees(math.atan2(float(self.y) - cp_y, float(self.x) - cp_x))
-                        # ext = math.degrees(self.__get_extent(radius))
-                        self.my_canvas.create_arc(str(cp_x + radius) + 'i', str(cp_y + radius) + 'i',
-                                                  str(cp_x - radius) + 'i', str(cp_y - radius) + 'i', style=tk.ARC,
-                                                  width=self.current_aperture, start=start_angle,
-                                                  extent=end_angle-start_angle, outline='black')
-                        # self.my_canvas.create_arc('0', '0', '100', '100', style='arc', start=90, extent=180,
-                        #                           outline='purple')
+    @staticmethod
+    def __get_circle_diameter(value):
+        return value[3:len(value)]
+
+    @staticmethod
+    def __get_rectangle_size(value):
+        print(value)
+        find_x = value.find('X'[0:len(value)])
+        width = value[2:find_x]
+        length = value[find_x+1:len(value)]
+        print(width, length)
+        return width, length
 
     def __get_extent(self, radius):
         distance = self.__distance(float(self.start_x), float(self.start_y), float(self.x), float(self.y))
@@ -233,7 +317,6 @@ class GerberCanvas:
                 self.direction = 180
 
     def __get_numbers(self, item):
-        global x_start, y_start, d_start, found
         found = 0
 
         if 'I' in item and 'J' in item and found == 0:
@@ -304,6 +387,7 @@ class GerberCanvas:
             first = number[0:len(number)-5]
             if '-' in number:
                 return first + '.' + last
+                # return '-' + first + '.' + last
             else:
                 return first + '.' + last
 
@@ -326,14 +410,15 @@ class GerberCanvas:
         self.scale_factor = 1
         self.scale_factor += .1
         self.my_canvas.scale('all', 0, 0, self.scale_factor, self.scale_factor)
-        pp.adjust_pic_n_place(self.scale_factor)
+        PickPlace.adjust_pic_n_place(self.scale_factor)
         self.scaled = True
 
     def __scale_image_down(self, event=None):
         self.scale_factor = 1
         self.scale_factor -= .1
         self.my_canvas.scale('all', 0, 0, self.scale_factor, self.scale_factor)
-        pp.adjust_pic_n_place(self.scale_factor)
+        if PickPlace.is_file_loaded:
+            PickPlace.adjust_pic_n_place(self.scale_factor)
         self.scaled = True
 
     def __scale_image(self, event=None):

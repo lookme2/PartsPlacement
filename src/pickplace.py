@@ -15,7 +15,6 @@ class PickPlace:
             my_pnp_file = askopenfilename(title='Open Pick and Place File', filetypes=[('CSV files', '*.CSV'),
                                                                                        ('csv Files', '*.csv')],
                                           initialdir='')
-
             if my_pnp_file:
                 with open(my_pnp_file) as csvfile:
                     dialect = csv.Sniffer().sniff(csvfile.read(1024))
@@ -29,16 +28,15 @@ class PickPlace:
                             if row[0] != 'Designator':
                                 new_part = {'ref': row[0], 'x': row[4], 'y': row[5], 'layer': row[2]}
                                 PickPlace.pick_n_place_list.append(new_part)
-                    PickPlace.pick_n_place_filename = my_pnp_file
                     csvfile.close()
                     PickPlace.is_file_loaded = True
                     # check for canvas resizing before loading pick and place file
                     if canvas.scaled:
                         messagebox.showwarning('Scaled Image', 'The Gerber image has been scaled.  Please Reload image')
-                    return 1
+                    return 1, my_pnp_file
         except IOError:
             messagebox.showerror('File Error', 'Loading Pick and Place file did not work!!!')
-            return 0
+            return 0, None
 
     def get_x(self, ref):
         for each in self.pick_n_place_list:
