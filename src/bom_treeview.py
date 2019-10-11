@@ -49,6 +49,8 @@ class bomTreeView:
     Setup my BOM Tree view
     """
 
+    my_canvas = object
+
     def __init__(self, frame):
         self.my_bom_file = ''
         self.my_bom_saved_file = ''
@@ -73,15 +75,6 @@ class bomTreeView:
         self.part_qty = ''
         # class variables go below.
         self.parts_list = []  # hold the list of parts
-
-    # @property
-    # def my_bom_file(self):
-    #     return self.my_bom_file
-    #
-    # @my_bom_file.setter
-    # def my_bom_file(self, file_name):
-    #     pass
-    #     # self.my_bom_file = file_name
 
     def import_csv(self, frame, parts_list):
         """
@@ -256,12 +249,12 @@ class bomTreeView:
         print(self.my_bom_list.set(rowid))
 
         if PickPlace.is_file_loaded:
-            gc.delete_current_highlight(gc.my_canvas)
-            # gc.delete_current_highlight(self.canvas)
+            # gc.delete_current_highlight()
+            gc.delete_current_highlight(bomTreeView.my_canvas)
             try:
                 for pnp in PickPlace.pick_n_place_list:
                     if pnp['ref'] == current_part['Component']:
-                        gc.high_lite_part(gc.my_canvas, pnp['x'], pnp['y'], pnp['layer'])
+                        gc.high_lite_part(bomTreeView.my_canvas,pnp['x'], pnp['y'], pnp['layer'])
                         # gc.high_lite_part(self.canvas, pnp['x'], pnp['y'], pnp['layer'])
             except TypeError:
                 pass

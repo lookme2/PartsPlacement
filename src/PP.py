@@ -23,6 +23,7 @@ class Application(tk.Frame):
         self.board_qty = tk.StringVar()
         self.checked = tk.IntVar()
         self.create_widgets()
+        self.pcb_board = None
 
     def create_widgets(self):
         top = self.winfo_toplevel()
@@ -45,12 +46,12 @@ class Application(tk.Frame):
         tk.Label(component_info_frame, text='MFG Part#: ').grid(row=4, column=0, sticky='w')
         tk.Label(component_info_frame, text='Description: ').grid(row=5, column=0, sticky='w')
         tk.Label(component_info_frame, text='Part Number Qty: ').grid(row=6, column=0, sticky='w')
-        self.part_qty.set(current_bom.part_qty)
 
         bom_file = ttk.Label(component_info_frame, textvariable=self.bom_file_name)
         bom_file.grid(row=0, column=1, sticky='w')
+        self.part_qty.set(current_bom.part_qty)
 
-        gerber_file = ttk.Label(component_info_frame, text='null', textvariable=self.gerber_file_name)
+        gerber_file = ttk.Label(component_info_frame, textvariable=self.gerber_file_name)
         gerber_file.grid(row=1, column=1, sticky='w')
 
         pick_n_place_file = ttk.Label(component_info_frame, textvariable=self.pick_n_place_file_name)
@@ -73,6 +74,7 @@ class Application(tk.Frame):
         canvas_frame.grid(row=1, column=0, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W, padx=10, pady=1)
 
         pcb_board = gc.GerberCanvas(canvas_frame)
+        bomTreeView.my_canvas = pcb_board
 
         bottom_frame = tk.Frame(self.master, relief='groove')
         btn_load_bom = tk.Button(bottom_frame, text='Import BOM',
@@ -102,7 +104,7 @@ class Application(tk.Frame):
         btn_load_bom.grid(row=0, column=8, sticky='e', padx='10', pady='5')
 
         btn_load_pp = tk.Button(bottom_frame, text='Load Pick Place File',
-                                command=lambda: self.load_pick_place(pcb_board))
+                                command=lambda: self.load_pick_place())
         btn_load_pp.grid(row=0, column=9, sticky='e', padx='10', pady='5')
         bottom_frame.grid(row=2, column=0, columnspan=2)
 
@@ -124,17 +126,15 @@ class Application(tk.Frame):
     def set_qty(self, string):
         self.part_qty.set(string)
 
-    def load_pick_place(self, canvas):
-        status, return_name = PickPlace.load_pick_place(canvas)
+    def load_pick_place(self):
+        status, return_name = PickPlace.load_pick_place()
         self.pick_n_place_file_name.set(return_name)
-        my_bom.pnp_loaded = status
+        PickPlace.pnp_loaded = status
 
-    #  todo fix this.  it is not working right.
-    @staticmethod
-    def load_gerber_file(pc_board):
+    def load_gerber_file(self, pc_board):
         path, file = zf.load_zip_file()
-        # self.gerber_file_name.set(file_path_name)
-        pc_board.load_gerber(pc_board, path, file)
+        self.gerber_file_name.set(file)
+        pc_board.load_gerber(path, file)
 
     # loop through the parts for each board entered
     def process_boards(self, event):

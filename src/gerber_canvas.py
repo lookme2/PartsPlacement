@@ -66,9 +66,8 @@ class GerberCanvas:
     # def my_canvas(self):
     #     return self.my_canvas
 
-    def load_gerber(self, canvas, path, file):
+    def load_gerber(self, path, file):
         """load gerber file
-        :param canvas:  which canvas to draw on
         :param path:  path to the file
         :param file:  file name to use
         """
@@ -76,7 +75,7 @@ class GerberCanvas:
         try:
             # file_path = askopenfilename(title='Open Top Silk Screen File', filetypes=[('GTO files', '*.GTO')],
             #                             initialdir='')
-            # all_ids = canvas.find_all()
+
             all_ids = self.my_canvas.find_all()
             # delete the current image if one exist.
             if all_ids:
@@ -98,17 +97,18 @@ class GerberCanvas:
             self.__parse_file(self.file_commands)
             self.my_canvas.create_oval('0i', '0i', '.1i', '.1i', outline='red')
             self.gerber_file_name = file
-            # self.my_canvas.config(scrollregion=self.my_canvas.bbox('all'))
             self.scaled = False
-            self.bounding_box_size = self.my_canvas.bbox('all')
+            # self.bounding_box_size = self.my_canvas.bbox('all')
             if DEBUG:
                 print('Scroll region is : ', self.bounding_box_size)
-            # load top pads into image
-            self.load_gerber_gtp(os.path.join(path, file))
         except IOError:
             messagebox.showerror('File Error', 'File did not open, GTO')
         finally:
             self.file_gto = False
+            # load top pads into image
+            self.load_gerber_gtp(os.path.join(path, file))
+            self.my_canvas.config(scrollregion=self.my_canvas.bbox('all'))
+            # self.my_canvas.configure(xscrollcommand=self.x_scrollbar.set, yscrollcommand=self.y_scrollbar.set)
 
     def load_gerber_gtp(self, file_path):
         self.file_gtp = True
@@ -125,7 +125,7 @@ class GerberCanvas:
             self.__parse_file(self.file_gtp_commands)
             # self.scaled = False
         except IOError:
-            messagebox.showerror('File Error', 'File did not open, GTO')
+            messagebox.showerror('File Error', 'File did not open, GTP')
 
     def __parse_file(self, commands):
         if DEBUG:
@@ -206,7 +206,7 @@ class GerberCanvas:
                                                     str(y0) + GerberCanvas.units_string[GerberCanvas.units],
                                                     str(x1) + GerberCanvas.units_string[GerberCanvas.units],
                                                     str(y1) + GerberCanvas.units_string[GerberCanvas.units],
-                                                    outline='black', fill='black')
+                                                    outline='white', fill='black')
                 if 'C,' in self.AD_commands[self.current_ad_command]:
                     print('draw a circle')
 
@@ -256,26 +256,33 @@ class GerberCanvas:
                                 messagebox.showwarning('Warning', 'Something went wrong.')
                                 break
                         else:   # This draws arcs
+                            # self.evaluate_arc_command(item)
                             cp_x = float(self.start_x) + float(self.i)
                             cp_y = float(self.start_y) + float(self.j)
+
                             if DEBUG:
                                 print(str(cp_x) + ' ' + str(cp_y))
                             if float(self.i) > 0:
                                 radius = float(self.i)
                             elif float(self.j) > 0:
                                 radius = float(self.j)
+                            else:
+                                radius = 0.0
                             self.__set_direction()
                             start_angle = math.degrees(math.atan2(float(self.start_y) - cp_y, float(self.start_x) - cp_x))
                             end_angle = math.degrees(math.atan2(float(self.y) - cp_y, float(self.x) - cp_x))
-                            # ext = math.degrees(self.__get_extent(radius))
-                            self.my_canvas.create_arc(str(cp_x + radius) + GerberCanvas.units_string[GerberCanvas.units],
-                                                      str(cp_y + radius) + GerberCanvas.units_string[GerberCanvas.units],
-                                                      str(cp_x - radius) + GerberCanvas.units_string[GerberCanvas.units],
-                                                      str(cp_y - radius) + GerberCanvas.units_string[GerberCanvas.units],
-                                                      style=tk.ARC, width=self.current_aperture, start=start_angle,
-                                                      extent=end_angle-start_angle, outline='black')
-                            # self.my_canvas.create_arc('0', '0', '100', '100', style='arc', start=90, extent=180,
-                            #                           outline='purple')
+                            # radius = math.degrees(self.__get_extent(radius))
+                            try:
+                                self.my_canvas.create_arc(str(cp_x + radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                          str(cp_y + radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                          str(cp_x - radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                          str(cp_y - radius) + GerberCanvas.units_string[GerberCanvas.units],
+                                                          style=tk.ARC, width=self.current_aperture, start=start_angle,
+                                                          extent=end_angle-start_angle, outline='black')
+                                # self.my_canvas.create_arc('0', '0', '100', '100', style='arc', start=90, extent=180,
+                                #                           outline='purple')
+                            except UnboundLocalError():
+                                messagebox.showwarning('Warning', 'Something went wrong.')
 
     @staticmethod
     def __get_circle_diameter(value):
