@@ -26,6 +26,7 @@ class Application(tk.Frame):
         self.pcb_board = None
 
     def create_widgets(self):
+
         top = self.winfo_toplevel()
         top.columnconfigure(0, weight=1)
         top.columnconfigure(1, weight=3)
@@ -49,7 +50,7 @@ class Application(tk.Frame):
 
         bom_file = ttk.Label(component_info_frame, textvariable=self.bom_file_name)
         bom_file.grid(row=0, column=1, sticky='w')
-        self.part_qty.set(current_bom.part_qty)
+        self.part_qty.set(bomTreeView.selected_part_qty)
 
         gerber_file = ttk.Label(component_info_frame, textvariable=self.gerber_file_name)
         gerber_file.grid(row=1, column=1, sticky='w')
@@ -65,6 +66,7 @@ class Application(tk.Frame):
 
         lbl_qty = ttk.Label(component_info_frame, textvariable=self.part_qty)
         lbl_qty.grid(row=4, column=1, sticky='nw')
+        self.part_qty.set(bomTreeView.selected_part_qty)
 
         component_info_frame.grid(row=0, column=1, sticky=tk.N + tk.S + tk.E + tk.W, padx=5, pady=5)
 
@@ -117,8 +119,13 @@ class Application(tk.Frame):
         returned_name = bom.import_csv(bom, parts_list)
         self.bom_file_name.set(returned_name)
 
-    def set_mfg_part_number(self, string):
-        self.mfg_part_number.set(string)
+    @property
+    def part_number(self):
+        return self.mfg_part_number.get
+
+    @part_number.setter
+    def part_number(self, value):
+        self.mfg_part_number.set(value)
 
     def set_description(self, string):
         self.description.set(string)
@@ -149,6 +156,6 @@ if __name__ == '__main__':
     if sys.platform == 'linux':
         app.master.iconbitmap('icon.png')
     else:
-        app.master.iconbitmap('pp.ico')
+        app.master.iconbitmap('PP.ico')
     app.master.title('Place Parts')
     app.mainloop()

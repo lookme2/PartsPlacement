@@ -70,11 +70,19 @@ class bomTreeView:
         self.pnp_loaded = 0
         self.board_qty = 1
         self.board_qty_loop = 1
-        self.selected_part_number = ''
-        self.selected_part_qty = ''
-        self.part_qty = ''
+        self._selected_part_number = ''
+        self._selected_part_qty = ''
+        # self.part_qty = ''
         # class variables go below.
         self.parts_list = []  # hold the list of parts
+
+    @property
+    def selected_part_qty(self):
+        return self._selected_part_qty
+
+    @property
+    def selected_part_number(self):
+        return self._selected_part_number
 
     def import_csv(self, frame, parts_list):
         """
@@ -244,8 +252,8 @@ class bomTreeView:
         dict_temp = (self.my_bom_list.item(rowid))
         qty = Part.part_qty(self.parts_list, dict_temp['text'])
         print('current qty is ', qty)
-        self.part_qty = qty
-        self.selected_part_qty = qty
+        # self.part_qty = qty
+        self._selected_part_qty = qty
         print(self.my_bom_list.set(rowid))
 
         if PickPlace.is_file_loaded:
