@@ -147,6 +147,7 @@ class Application(tk.Frame):
     def process_boards(self, event):
         # print('I left the field ' + board_qty.get())
         board_qty = self.board_qty.get()
+        print(board_qty)
         # bt.bomTreeView.number_of_boards(my_bom, board_qty)
 
 
