@@ -52,7 +52,7 @@ class bomTreeView:
     my_canvas = object
 
     def __init__(self, frame):
-        self.my_bom_file = ''
+        self._my_bom_file = ''
         self.my_bom_saved_file = ''
         self.advance = 0
 
@@ -77,6 +77,14 @@ class bomTreeView:
         self.parts_list = []  # hold the list of parts
 
     @property
+    def bom_file_name(self):
+        return self._my_bom_file
+
+    @bom_file_name.setter
+    def bom_file_name(self, name):
+        self._my_bom_file = name
+
+    @property
     def selected_part_qty(self):
         return self._selected_part_qty
 
@@ -97,11 +105,12 @@ class bomTreeView:
 
         # my_stuff = data
         try:
-            self.my_bom_file = askopenfilename(title='Open BOM File', filetypes=[('CSV files', '*.CSV')],
+            my_bom_file = askopenfilename(title='Open BOM File', filetypes=[('CSV files', '*.CSV')],
                                                initialdir=' ')
-            filename = os.path.split(self.my_bom_file)
+            filename = os.path.split(my_bom_file)
             # print('filename = ', filename[1])
             if self.my_bom_file:
+                self._my_bom_file = filename[1]
                 with open(self.my_bom_file) as csvfile:
                     reader = csv.reader(csvfile)
                     for row in reader:  # this processes the csv file to populate the list of parts
@@ -129,7 +138,7 @@ class bomTreeView:
                 self.write_bom_list(self.parts_list)
                 self.my_bom_list.selection_toggle('I001')
                 self.my_bom_list.focus('I001')
-                return filename[1]
+                return True
 
     def save(self):
         """

@@ -25,6 +25,14 @@ class Application(tk.Frame):
         self.create_widgets()
         self.pcb_board = None
 
+    @property
+    def qty(self):
+        return self.part_qty
+
+    @qty.setter
+    def qty(self, quantity):
+        self.part_qty.set(quantity)
+
     def create_widgets(self):
 
         top = self.winfo_toplevel()
@@ -116,8 +124,9 @@ class Application(tk.Frame):
         :param  parts_list
 
         """
-        returned_name = bom.import_csv(bom, parts_list)
-        self.bom_file_name.set(returned_name)
+        status = bom.import_csv(bom, parts_list)
+        if status:
+            self.bom_file_name.set(bom.my_bom_file)
 
     @property
     def part_number(self):
@@ -157,6 +166,6 @@ if __name__ == '__main__':
     if sys.platform == 'linux':
         app.master.iconbitmap('icon.png')
     else:
-        app.master.iconbitmap('PP.ico')
+        app.master.iconbitmap('pp.ico')
     app.master.title('Place Parts')
     app.mainloop()
