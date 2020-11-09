@@ -36,4 +36,3 @@ def load_zip_file():
                             print('Bad Zip File')
         except TypeError:
             pass
-

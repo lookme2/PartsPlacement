@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 
 import gerber_canvas as gc
-from bom_treeview import bomTreeView
+from bom import Bom
 from pickplace import PickPlace
 import sys
 import zf
@@ -11,27 +11,20 @@ import zf
 
 class Application(tk.Frame):
 
-    def __init__(self, master=None):
-        tk.Frame.__init__(self, master)
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
         self.grid()
         self.bom_file_name = tk.StringVar()
         self.gerber_file_name = tk.StringVar()
         self.pick_n_place_file_name = tk.StringVar()
-        self.mfg_part_number = tk.StringVar()
-        self.description = tk.StringVar()
-        self.part_qty = tk.StringVar()
+        self._mfg_part_number = tk.StringVar()
+        self._description = tk.StringVar()
+
         self.board_qty = tk.StringVar()
         self.checked = tk.IntVar()
         self.create_widgets()
         self.pcb_board = None
-
-    @property
-    def qty(self):
-        return self.part_qty
-
-    @qty.setter
-    def qty(self, quantity):
-        self.part_qty.set(quantity)
 
     def create_widgets(self):
 
@@ -43,9 +36,30 @@ class Application(tk.Frame):
         top.rowconfigure(1, weight=2)
 
         bom_frame = tk.Frame(self.master)
-        bom_frame.grid(row=0, column=0, sticky=tk.N + tk.S + tk.E + tk.W, padx=3, pady=3)
-        current_bom = bomTreeView(bom_frame)
+        part_qty = tk.StringVar()
 
+        my_bom = Bom()
+
+        bom_frame.grid(row=0, column=0, sticky=tk.N + tk.S + tk.E + tk.W, padx=3, pady=3)
+        my_bom_list = ttk.Treeview(bom_frame, columns=('Component', 'Description', 'Done'), selectmode='extended')
+        my_bom_list.column('#2', anchor='center')
+        my_bom_list.column('#3', anchor='center')
+        my_bom_list.heading('#0', text='Mfg Part#', anchor='center')
+        my_bom_list.heading('#1', text='Component', anchor='center')
+        my_bom_list.heading('#2', text='Description', anchor='center')
+        my_bom_list.heading('#3', text='Done')
+        my_bom_list.pack(expand=True, fill='both')
+
+        # my_bom = Bom()
+
+        # self.bom_list.my_bom_tree_list = my_bom_list
+
+        my_bom_list.bind('<Key-a>', my_bom.inc)
+        my_bom_list.bind('<Key-r>', my_bom.dec)
+        my_bom_list.bind('<<TreeviewSelect>>', my_bom.bom_item_selected(my_bom.bom_list, my_bom_list.focus()))
+
+        #######################################################################################
+        # this start the info frame.
         component_info_frame = tk.LabelFrame(self.master, text='Part/Project Info:', relief=tk.GROOVE, border=3)
 
         tk.Label(component_info_frame, text='Bom File: ').grid(row=0, column=0, sticky='w')
@@ -56,49 +70,59 @@ class Application(tk.Frame):
         tk.Label(component_info_frame, text='Description: ').grid(row=5, column=0, sticky='w')
         tk.Label(component_info_frame, text='Part Number Qty: ').grid(row=6, column=0, sticky='w')
 
-        bom_file = ttk.Label(component_info_frame, textvariable=self.bom_file_name)
+        bom_file = ttk.Label(component_info_frame,
+                             textvariable=self.bom_file_name)
         bom_file.grid(row=0, column=1, sticky='w')
-        self.part_qty.set(bomTreeView.selected_part_qty)
+        # self.part_qty.set(bomTreeView.selected_part_qty)
 
-        gerber_file = ttk.Label(component_info_frame, textvariable=self.gerber_file_name)
+        gerber_file = ttk.Label(component_info_frame,
+                                textvariable=self.gerber_file_name)
         gerber_file.grid(row=1, column=1, sticky='w')
 
-        pick_n_place_file = ttk.Label(component_info_frame, textvariable=self.pick_n_place_file_name)
+        pick_n_place_file = ttk.Label(component_info_frame,
+                                      textvariable=self.pick_n_place_file_name)
         pick_n_place_file.grid(row=2, column=1, sticky='nw')
 
-        lbl_part_number = ttk.Label(component_info_frame, textvariable=self.mfg_part_number)
+        lbl_part_number = ttk.Label(component_info_frame,
+                                    textvariable=self._mfg_part_number)
         lbl_part_number.grid(row=4, column=1, sticky='nw')
+        self._mfg_part_number.set(my_bom.selected_part_number)
 
-        lbl_description = ttk.Label(component_info_frame, textvariable=self.description)
+        lbl_description = ttk.Label(component_info_frame,
+                                    textvariable=self._description)
         lbl_description.grid(row=5, column=1, sticky='nw')
+        self._description.set(my_bom.selected_part_number)
 
-        lbl_qty = ttk.Label(component_info_frame, textvariable=self.part_qty)
+        lbl_qty = ttk.Label(component_info_frame,
+                            textvariable=part_qty)
         lbl_qty.grid(row=4, column=1, sticky='nw')
-        self.part_qty.set(bomTreeView.selected_part_qty)
+        part_qty.set(my_bom.selected_part_qty)
 
         component_info_frame.grid(row=0, column=1, sticky=tk.N + tk.S + tk.E + tk.W, padx=5, pady=5)
+        component_info_frame.grid_propagate(0)
 
         # End Info Frame Stuff
+        ##############################################################################################
 
         canvas_frame = tk.Frame(self.master)
         canvas_frame.grid(row=1, column=0, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W, padx=10, pady=1)
 
         pcb_board = gc.GerberCanvas(canvas_frame)
-        bomTreeView.my_canvas = pcb_board
+        Bom.my_canvas = pcb_board
 
         bottom_frame = tk.Frame(self.master, relief='groove')
         btn_load_bom = tk.Button(bottom_frame, text='Import BOM',
-                                 command=lambda: self.open_bom_csv(current_bom, current_bom.parts_list))
+                                 command=lambda: self.open_bom_csv(my_bom, my_bom_list))
         btn_load_bom.grid(row=0, column=1, sticky='e', padx='10', pady='5')
 
-        btn_save_bom = tk.Button(bottom_frame, text='Save BOM File', command=lambda: current_bom.save())
+        btn_save_bom = tk.Button(bottom_frame, text='Save BOM File', command=lambda: my_bom.save())
         btn_save_bom.grid(row=0, column=2, sticky='e', padx='10', pady='5')
 
-        btn_load_bom = tk.Button(bottom_frame, text='Load BOM File', command=lambda: current_bom.load())
+        btn_load_bom = tk.Button(bottom_frame, text='Load BOM File', command=lambda: my_bom.load())
         btn_load_bom.grid(row=0, column=3, sticky='e', padx='10', pady='5')
 
         ckb_auto_move = tk.Checkbutton(bottom_frame, text='Auto Move', variable=self.checked,
-                                       command=lambda: current_bom.auto_advance(current_bom))
+                                       command=lambda: my_bom.auto_advance(my_bom))
         ckb_auto_move.grid(row=0, column=4, padx='10', pady='5')
 
         tk.Label(bottom_frame, text='Board Qty:').grid(row=0, column=5, padx='10', pady='5')
@@ -118,33 +142,18 @@ class Application(tk.Frame):
         btn_load_pp.grid(row=0, column=9, sticky='e', padx='10', pady='5')
         bottom_frame.grid(row=2, column=0, columnspan=2)
 
-    def open_bom_csv(self, bom, parts_list):
-        """ import new bom from csv file
-        :param  bom
-        :param  parts_list
-
+    def open_bom_csv(self, mybom, my_bom_list):
+        """ import new Bom from csv file
+        :param  mybom
+        :param my_bom_list
         """
-        status = bom.import_csv(bom, parts_list)
+        status, file_name = Bom.import_csv(mybom, my_bom_list)
         if status:
-            self.bom_file_name.set(bom.my_bom_file)
-
-    @property
-    def part_number(self):
-        return self.mfg_part_number.get
-
-    @part_number.setter
-    def part_number(self, value):
-        self.mfg_part_number.set(value)
-
-    def set_description(self, string):
-        self.description.set(string)
-
-    def set_qty(self, string):
-        self.part_qty.set(string)
+            self.bom_file_name.set(file_name)
 
     def load_pick_place(self):
-        status, return_name = PickPlace.load_pick_place()
-        self.pick_n_place_file_name.set(return_name)
+        status, file_name = PickPlace.load_pick_place()
+        self.pick_n_place_file_name.set(file_name)
         PickPlace.pnp_loaded = status
 
     def load_gerber_file(self, pc_board):
@@ -154,18 +163,29 @@ class Application(tk.Frame):
 
     # loop through the parts for each board entered
     def process_boards(self, event):
+
         # print('I left the field ' + board_qty.get())
-        board_qty = self.board_qty.get()
+        board_qty = self.board_qty.get
         print(board_qty)
         # bt.bomTreeView.number_of_boards(my_bom, board_qty)
+
+    def item_selected(self, bom_list, iid):
+
+        part_number, part_qty = bom_list.bom_item_selected(bom_list, iid)
+        self._mfg_part_number.set(part_number)
+        self._description.set(part_qty)
 
 
 if __name__ == '__main__':
 
-    app = Application()
-    if sys.platform == 'linux':
-        app.master.iconbitmap('icon.png')
-    else:
-        app.master.iconbitmap('pp.ico')
-    app.master.title('Place Parts')
+    root = tk.Tk()
+    app = Application(root)
+    #
+    # if sys.platform == 'linux':
+    #     app.
+    #     app.iconbitmap('icon.png')
+    # else:
+    #     pass
+    #     app.iconbitmap('pp.ico')
+    # app.master.title('Place Parts')
     app.mainloop()

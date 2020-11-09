@@ -62,10 +62,6 @@ class GerberCanvas:
 
         self.__part_selected = 0
 
-    # @property
-    # def my_canvas(self):
-    #     return self.my_canvas
-
     def load_gerber(self, path, file):
         """load gerber file
         :param path:  path to the file
