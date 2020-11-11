@@ -86,7 +86,7 @@ class Bom:
 
         self.bom_list = []  # hold the list of parts
         self._canvas = None
-        self._tree_view_list = None
+        # self._tree_view_list = None
 
     # @property
     # def my_bom_tree_list(self):
@@ -221,6 +221,7 @@ class Bom:
 
     def write_bom_list(self, my_bom_list):
         """Show the parts list in the Bom tree view
+
         :param: my_bom_list: parts list to show
         """
         for part in self.bom_list:
@@ -279,32 +280,35 @@ class Bom:
             if self.pnp_loaded:
                 self.check_part()
 
-    def bom_item_selected(self, bom_list, iid):
+    def bom_item_selected(self, bom_tree, iid):
         """
         when a part is selected in the Bom do something
+
+        :param bom_tree:  tree widget holding the data
+        :param iid: the selected row of the tree widget
         """
-        part_number, part_qty = self.check_part(bom_list, iid)
+        part_number, part_qty = self.check_part(bom_tree, iid)
         return part_number, part_qty
 
-    def check_part(self, bom_list, iid):
+    def check_part(self, bom_tree):
         """
 
-        :param bom_list: list to use
+        :param bom_tree: list to use
         :param iid : the current selected row
         :return: selected_part_number, selected_part_qty
         """
-        if bom_list:
-            rowid = bom_list.focus(iid)
-            current_part = bom_list.set(rowid)
+        rowid = bom_tree.focus()
+        current_part = bom_tree.set(rowid)
+        if current_part:
             print('Current Part item ', current_part)
-            dict_temp = (bom_list.item(rowid))
-            qty = Part.get_part_qty(bom_list, dict_temp['text'])
+            dict_temp = (bom_tree.item(current_part))
+            qty = Part.get_part_qty(bom_tree, dict_temp['text'])
             print('current qty is ', qty)
             # todo:  how to get the dang number back to the forum?
             self.selected_part_number = current_part
             self.selected_part_qty = qty
 
-            print(bom_list.set(rowid))
+            print(bom_tree.set(iid))
 
             # if PickPlace.is_file_loaded:
             #     gc.delete_current_highlight(self.my_canvas)
