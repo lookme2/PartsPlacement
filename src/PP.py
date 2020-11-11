@@ -5,11 +5,13 @@ from tkinter import ttk
 import gerber_canvas as gc
 from bom import Bom
 from pickplace import PickPlace
-import sys
+# import sys
 import zf
 
 
 class Application(tk.Frame):
+
+    my_bom = Bom()
 
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
@@ -38,25 +40,23 @@ class Application(tk.Frame):
         bom_frame = tk.Frame(self.master)
         part_qty = tk.StringVar()
 
-        my_bom = Bom()
-
         bom_frame.grid(row=0, column=0, sticky=tk.N + tk.S + tk.E + tk.W, padx=3, pady=3)
-        my_bom_list = ttk.Treeview(bom_frame, columns=('Component', 'Description', 'Done'), selectmode='extended')
-        my_bom_list.column('#2', anchor='center')
-        my_bom_list.column('#3', anchor='center')
-        my_bom_list.heading('#0', text='Mfg Part#', anchor='center')
-        my_bom_list.heading('#1', text='Component', anchor='center')
-        my_bom_list.heading('#2', text='Description', anchor='center')
-        my_bom_list.heading('#3', text='Done')
-        my_bom_list.pack(expand=True, fill='both')
+        bom_tree = ttk.Treeview(bom_frame, columns=('Component', 'Description', 'Done'), selectmode='extended')
+        bom_tree.column('#2', anchor='center')
+        bom_tree.column('#3', anchor='center')
+        bom_tree.heading('#0', text='Mfg Part#', anchor='center')
+        bom_tree.heading('#1', text='Component', anchor='center')
+        bom_tree.heading('#2', text='Description', anchor='center')
+        bom_tree.heading('#3', text='Done')
+        bom_tree.pack(expand=True, fill='both')
 
         # my_bom = Bom()
 
         # self.bom_list.my_bom_tree_list = my_bom_list
 
-        my_bom_list.bind('<Key-a>', my_bom.inc)
-        my_bom_list.bind('<Key-r>', my_bom.dec)
-        my_bom_list.bind('<<TreeviewSelect>>', my_bom.bom_item_selected(my_bom.bom_list, my_bom_list.focus()))
+        bom_tree.bind('<Key-a>', Application.my_bom.inc)
+        bom_tree.bind('<Key-r>', Application.my_bom.dec)
+        # bom_tree.bind('<<TreeviewSelect>>', self.item_selected(bom_tree))
 
         #######################################################################################
         # this start the info frame.
@@ -86,17 +86,17 @@ class Application(tk.Frame):
         lbl_part_number = ttk.Label(component_info_frame,
                                     textvariable=self._mfg_part_number)
         lbl_part_number.grid(row=4, column=1, sticky='nw')
-        self._mfg_part_number.set(my_bom.selected_part_number)
+        self._mfg_part_number.set(Application.my_bom.selected_part_number)
 
         lbl_description = ttk.Label(component_info_frame,
                                     textvariable=self._description)
         lbl_description.grid(row=5, column=1, sticky='nw')
-        self._description.set(my_bom.selected_part_number)
+        self._description.set(Application.my_bom.selected_part_number)
 
         lbl_qty = ttk.Label(component_info_frame,
                             textvariable=part_qty)
         lbl_qty.grid(row=4, column=1, sticky='nw')
-        part_qty.set(my_bom.selected_part_qty)
+        part_qty.set(Application.my_bom.selected_part_qty)
 
         component_info_frame.grid(row=0, column=1, sticky=tk.N + tk.S + tk.E + tk.W, padx=5, pady=5)
         component_info_frame.grid_propagate(0)
@@ -112,17 +112,17 @@ class Application(tk.Frame):
 
         bottom_frame = tk.Frame(self.master, relief='groove')
         btn_load_bom = tk.Button(bottom_frame, text='Import BOM',
-                                 command=lambda: self.open_bom_csv(my_bom, my_bom_list))
+                                 command=lambda: self.open_bom_csv(Application.my_bom, bom_tree))
         btn_load_bom.grid(row=0, column=1, sticky='e', padx='10', pady='5')
 
-        btn_save_bom = tk.Button(bottom_frame, text='Save BOM File', command=lambda: my_bom.save())
+        btn_save_bom = tk.Button(bottom_frame, text='Save BOM File', command=lambda: Application.my_bom.save())
         btn_save_bom.grid(row=0, column=2, sticky='e', padx='10', pady='5')
 
-        btn_load_bom = tk.Button(bottom_frame, text='Load BOM File', command=lambda: my_bom.load())
+        btn_load_bom = tk.Button(bottom_frame, text='Load BOM File', command=lambda: Application.my_bom.load())
         btn_load_bom.grid(row=0, column=3, sticky='e', padx='10', pady='5')
 
         ckb_auto_move = tk.Checkbutton(bottom_frame, text='Auto Move', variable=self.checked,
-                                       command=lambda: my_bom.auto_advance(my_bom))
+                                       command=lambda: Application.my_bom.auto_advance(Application.my_bom))
         ckb_auto_move.grid(row=0, column=4, padx='10', pady='5')
 
         tk.Label(bottom_frame, text='Board Qty:').grid(row=0, column=5, padx='10', pady='5')
@@ -147,7 +147,7 @@ class Application(tk.Frame):
         :param  mybom
         :param my_bom_list
         """
-        status, file_name = Bom.import_csv(mybom, my_bom_list)
+        status, file_name = Bom.import_csv(Application.my_bom, my_bom_list)
         if status:
             self.bom_file_name.set(file_name)
 
@@ -169,9 +169,8 @@ class Application(tk.Frame):
         print(board_qty)
         # bt.bomTreeView.number_of_boards(my_bom, board_qty)
 
-    def item_selected(self, bom_list, iid):
-
-        part_number, part_qty = bom_list.bom_item_selected(bom_list, iid)
+    def item_selected(self, bom_tree):
+        part_number, part_qty = Application.my_bom.check_part(bom_tree)
         self._mfg_part_number.set(part_number)
         self._description.set(part_qty)
 
