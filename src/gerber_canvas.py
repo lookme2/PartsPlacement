@@ -407,7 +407,8 @@ class GerberCanvas:
                                                               str(last_y) + 'i', outline='blue', fill='blue')
 
     def delete_current_highlight(self):
-        self.my_canvas.delete(self.my_canvas, self.__part_selected)
+        if self.__part_selected:
+            self.my_canvas.delete(self.__part_selected)
 
     def __scale_image_up(self, event=None):
         self.scale_factor = 1
