@@ -27,8 +27,8 @@ class Application(tk.Frame):
 
         self.board_qty = tk.StringVar()
         self.checked = tk.IntVar()
-        self.create_widgets()
         self.pcb_board = None
+        self.create_widgets()
 
     def create_widgets(self):
 

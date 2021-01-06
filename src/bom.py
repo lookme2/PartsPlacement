@@ -222,7 +222,7 @@ class Bom:
         :param event
         :return: none
         """
-        print(event.widget.focus())
+        # print(event.widget.focus())
         rowid = event.widget.focus()
         dictTemp = event.widget.set(rowid)
         self.__check_done_field(event.widget, dictTemp, rowid)
@@ -255,10 +255,11 @@ class Bom:
 
     def bom_item_selected(self, bom_tree):
         """
-        when a part is selected in the Bom do something
+        when a part is selected in the Bom list
 
         :param bom_tree:  tree widget holding the data
-        # :param iid: the selected row of the tree widget
+
+        :return Selected part number, selected part description, selected part qty
         """
         selected_part_number, selected_part_description, selected_part_qty = self.check_part(bom_tree)
         return selected_part_number, selected_part_description, selected_part_qty

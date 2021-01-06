@@ -40,8 +40,11 @@ class GerberCanvas:
         self.graphics_mode = 0
         self.scaled = False
         self.bounding_box_size = ()
+        self._canvas_frame = frame
+        self.create_canvas()
 
-        self.my_canvas = tk.Canvas(frame, bg='white', bd='1')
+    def create_canvas(self):
+        self.my_canvas = tk.Canvas(self._canvas_frame, bg='white', bd='1')
         self.my_canvas.pack(expand=True, fill='both')
         if sys.platform == 'linux':
             self.my_canvas.bind('<Button-4>', self.__scale_image_up)
@@ -50,11 +53,11 @@ class GerberCanvas:
             self.my_canvas.bind('<MouseWheel>', self.__scale_image)
 
         # fixme fix the scrollbars so that they work correctly
-        self.y_scrollbar = tk.Scrollbar(self.my_canvas, command=self.my_canvas.yview)
-        self.y_scrollbar.pack(expand=True, fill='y', anchor='e')
-
-        self.x_scrollbar = tk.Scrollbar(self.my_canvas, orient=tk.HORIZONTAL, command=self.my_canvas.xview)
-        self.x_scrollbar.pack(fill='x', anchor='s')
+        # self.y_scrollbar = tk.Scrollbar(self.my_canvas, command=self.my_canvas.yview)
+        # self.y_scrollbar.pack(expand=True, fill='y', anchor='e')
+        #
+        # self.x_scrollbar = tk.Scrollbar(self.my_canvas, orient=tk.HORIZONTAL, command=self.my_canvas.xview)
+        # self.x_scrollbar.pack(fill='x', anchor='s')
 
         # Set this only if using in Linux
         if sys.platform == 'linux':
@@ -133,6 +136,7 @@ class GerberCanvas:
             if '%FSLA' in item:
                 self.x_format = item[6:8]
                 self.y_format = item[9:11]
+
             if '%MO' in item:
                 self.units = item[3:5]
                 if 'IN' in item:
@@ -140,16 +144,22 @@ class GerberCanvas:
                 if 'MM' in item:
                     GerberCanvas.units = 1
                 # print('units is ', self.units)
+
             if 'G01' in item:
                 self.graphics_mode = 1  # sets Interpolation mode graphics state parameter to linear
+
             if 'G03' in item:
                 self.direction = 270  # CounterClockWise
+
             if 'G02' in item:
                 self.direction = 90  # ClockWise
+
             if 'G74' in item:
                 self.quadrant_mode = 0  # single Quadrant mode
+
             if 'G75' in item:
                 self.quadrant_mode = 1  # Multi quadrant mode
+
             if '%AD' in item:   # define the aperture
                 name = item[3:item.find(',')-1]
                 if DEBUG:
@@ -160,6 +170,7 @@ class GerberCanvas:
                 if DEBUG:
                     print(value)
                 self.AD_commands[name] = value
+
             if item[0:1] == 'D':    # set the current aperture
                 item = item[0:item.find('*')]
                 if DEBUG:
@@ -303,7 +314,12 @@ class GerberCanvas:
 
     @staticmethod
     def __distance(start_x, start_y, end_x, end_y):
-        """calculate distance between two points"""
+        """calculate distance between two points
+        :param start_x
+        :param start_y
+        :param end_x
+        :param end_y
+        """
         distance = math.sqrt((start_x - end_x) ** 2 + (start_y - end_y) ** 2)
         return distance
 
@@ -400,11 +416,14 @@ class GerberCanvas:
         last_x = float(x1) + .1
         last_y = float(y1) + .1
         if layer == 'TopLayer':
-            self.__part_selected = self.my_canvas.create_oval(str(x1) + 'i', str(y1) + 'i', str(last_x) + 'i',
-                                                              str(last_y) + 'i', outline='red', fill='red')
-        elif layer == 'BottomLayer':
-            self.__part_selected = self.my_canvas.create_oval(str(x1) + 'i', str(y1) + 'i', str(last_x) + 'i',
-                                                              str(last_y) + 'i', outline='blue', fill='blue')
+            color = 'red'
+        else:
+            color = 'blue'
+        self.__part_selected = self.my_canvas.create_oval(str(x1) + 'i', str(y1) + 'i', str(last_x) + 'i', str(last_y) + 'i',
+                                                     outline=color, fill=color)
+        # elif layer == 'BottomLayer':
+        #     self.__part_selected = self.my_canvas.create_oval(str(x1) + 'i', str(y1) + 'i', str(last_x) + 'i',
+        #                                                       str(last_y) + 'i', outline='blue', fill='blue')
 
     def delete_current_highlight(self):
         if self.__part_selected:
@@ -430,6 +449,7 @@ class GerberCanvas:
             self.__scale_image_up()
         elif event.delta <= -120:
             self.__scale_image_down()
+        self.scaled = True
 
     @staticmethod
     def __format_pnp(number):
