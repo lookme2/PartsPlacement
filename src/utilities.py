@@ -1,7 +1,7 @@
 def load_BOM_file(data):
     my_stuff = data
     try:
-        filename = askopenfilename(title='Open BOM File', filetypes=[('CSV files', '*.csv')], initialdir=' ')
+        filename = askopenfilename(title='Open BOM File', filetypes=[('CSV files', ['*.csv','*.CSV'])], initialdir=' ')
 
         with open(filename) as csvfile:
             global reader

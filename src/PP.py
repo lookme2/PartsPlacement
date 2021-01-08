@@ -7,6 +7,7 @@ from bom import Bom
 from pickplace import PickPlace
 import sys
 import zf
+import dbrequest
 
 
 class Application(tk.Frame):
@@ -24,9 +25,12 @@ class Application(tk.Frame):
         self._mfg_part_number = tk.StringVar()
         self._description = tk.StringVar()
         self._part_qty = tk.StringVar()
+        self._inv_location = tk.StringVar()
+        self._board_location = tk.StringVar()
 
         self.board_qty = tk.StringVar()
         self.checked = tk.IntVar()
+
         self.pcb_board = None
         self.create_widgets()
 
@@ -66,6 +70,8 @@ class Application(tk.Frame):
         tk.Label(component_info_frame, text='MFG Part#: ').grid(row=4, column=0, sticky='w')
         tk.Label(component_info_frame, text='Description: ').grid(row=5, column=0, sticky='w')
         tk.Label(component_info_frame, text='Part Number Qty: ').grid(row=6, column=0, sticky='w')
+        tk.Label(component_info_frame, text='Inv Location: ').grid(row=7, column=0, sticky='w')
+        tk.Label(component_info_frame, text='Top/Bottom Location').grid(row=8, column=0, sticky='w')
 
         bom_file = ttk.Label(component_info_frame,
                              textvariable=self.bom_file_name)
@@ -91,6 +97,14 @@ class Application(tk.Frame):
         lbl_qty = ttk.Label(component_info_frame,
                             textvariable=self._part_qty)
         lbl_qty.grid(row=6, column=1, sticky='nw')
+
+        lbl_inv_location = ttk.Label(component_info_frame,
+                                     textvariable=self._inv_location)
+        lbl_inv_location.grid(row=7, column=1, sticky='nw')
+
+        lbl_board_location = ttk.Label(component_info_frame,
+                                       textvariable=self._board_location)
+        lbl_board_location.grid(row=8, column=1, sticky='nw')
 
         component_info_frame.grid(row=0, column=1, sticky=tk.N + tk.S + tk.E + tk.W, padx=5, pady=5)
         component_info_frame.grid_propagate(0)
@@ -163,10 +177,12 @@ class Application(tk.Frame):
     def item_selected(self, event):
         tree_widget = event.widget
         if Application.my_bom:               # if the bom tree is not empty
-            part_number, part_desc, part_qty = self.my_bom.check_part(tree_widget)
+            part_number, part_desc, part_qty, part_layer = self.my_bom.check_part(tree_widget)
+            self._inv_location.set(dbrequest.find_part_location(part_number))
             self._mfg_part_number.set(part_number)
             self._description.set(part_desc)
             self._part_qty.set(part_qty)
+            self._board_location.set(part_layer)
 
 
 if __name__ == '__main__':

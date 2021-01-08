@@ -277,6 +277,7 @@ class Bom:
             selected_part_number = Part.get_part_number(self.bom_list, current_part['Component'])
             selected_part_description = current_part['Description']
             selected_part_qty = Part.get_part_qty(self.bom_list, current_part['Component'])
+            selected_part_layer = PickPlace.get_layer(current_part['Component'])
 
             if PickPlace.is_file_loaded:
                 gc.delete_current_highlight(self._canvas)
@@ -286,7 +287,7 @@ class Bom:
                             gc.high_lite_part(self._canvas, pnp['x'], pnp['y'], pnp['layer'])
                 except TypeError:
                     pass
-            return selected_part_number, selected_part_description, selected_part_qty
+            return selected_part_number, selected_part_description, selected_part_qty, selected_part_layer
 
     def auto_advance(self, mode):
         """

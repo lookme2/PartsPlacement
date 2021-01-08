@@ -53,11 +53,11 @@ class GerberCanvas:
             self.my_canvas.bind('<MouseWheel>', self.__scale_image)
 
         # fixme fix the scrollbars so that they work correctly
-        # self.y_scrollbar = tk.Scrollbar(self.my_canvas, command=self.my_canvas.yview)
-        # self.y_scrollbar.pack(expand=True, fill='y', anchor='e')
-        #
-        # self.x_scrollbar = tk.Scrollbar(self.my_canvas, orient=tk.HORIZONTAL, command=self.my_canvas.xview)
-        # self.x_scrollbar.pack(fill='x', anchor='s')
+        self.y_scrollbar = tk.Scrollbar(self.my_canvas, command=self.my_canvas.yview)
+        self.y_scrollbar.pack(expand=True, fill='y', anchor='e')
+
+        self.x_scrollbar = tk.Scrollbar(self.my_canvas, orient=tk.HORIZONTAL, command=self.my_canvas.xview)
+        self.x_scrollbar.pack(fill='x', anchor='s')
 
         # Set this only if using in Linux
         if sys.platform == 'linux':
