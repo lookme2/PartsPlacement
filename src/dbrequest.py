@@ -23,7 +23,7 @@ def find_part_location(part_number):
     :return: location of the part
     """
     try:
-        api = InvenTreeAPI(SERVER_ADDRESS, token=My_TOKEN)
+        api = InvenTreeAPI(SERVER_ADDRESS, token=My_TOKEN, verbose=True)
         parts = Part.list(api, search=part_number)
         # print(len(parts))
 
@@ -46,4 +46,5 @@ def find_part_location(part_number):
         # print(my_location)
         return my_location
     except:
+        print(api)
         print('Can not connect to the database')

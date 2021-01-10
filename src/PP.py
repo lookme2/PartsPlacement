@@ -178,7 +178,7 @@ class Application(tk.Frame):
         tree_widget = event.widget
         if Application.my_bom:               # if the bom tree is not empty
             part_number, part_desc, part_qty, part_layer = self.my_bom.check_part(tree_widget)
-            self._inv_location.set(dbrequest.find_part_location(part_number))
+            # self._inv_location.set(dbrequest.find_part_location(part_number))
             self._mfg_part_number.set(part_number)
             self._description.set(part_desc)
             self._part_qty.set(part_qty)
