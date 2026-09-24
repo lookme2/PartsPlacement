@@ -8,6 +8,6 @@ inventree==0.17.0
 itypes==1.2.0
 Jinja2==3.1.6
 MarkupSafe==1.1.1
-requests==2.25.1
+requests==2.33.0
 uritemplate==3.0.1
 urllib3==2.7.0
